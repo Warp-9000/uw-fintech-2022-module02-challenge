@@ -11,7 +11,7 @@ import fire
 import questionary
 from pathlib import Path
 
-from qualifier.utils.fileio import load_csv
+from qualifier.utils.fileio import load_csv, save_csv
 
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
@@ -24,6 +24,11 @@ from qualifier.filters.debt_to_income import filter_debt_to_income
 from qualifier.filters.loan_to_value import filter_loan_to_value
 
 
+# Global variables
+default_bank_loan_data = "./data/daily_rate_sheet.csv"
+default_output_data = "./my_bank_loans.csv"
+
+
 def load_bank_data():
     """Ask for the file path to the latest banking data and load the CSV file.
 
@@ -31,12 +36,21 @@ def load_bank_data():
         The bank data from the data rate sheet CSV file.
     """
 
-    csvpath = questionary.text("Enter a file path to a rate-sheet (.csv):").ask()
-    csvpath = Path(csvpath)
-    if not csvpath.exists():
-        sys.exit(f"Oops! Can't find this path: {csvpath}")
+    # Ask the user to enter loan data
+    csv_file_path = questionary.text("Enter a file path to a rate-sheet (.csv):").ask()
+    
+    # If the file path is blank set the path to the default, otherwise crea a path object with what they provided.
+    if csv_file_path == "":
+        csv_file_path = Path(default_bank_loan_data)
+    else:
+        csv_file_path = Path(csv_file_path)
 
-    return load_csv(csvpath)
+    # Check if the file path exists, if not exit the application
+    if not csv_file_path.exists():
+        print("Oops! Can't find this path: {csv_file_path}")
+        exit_application()
+
+    return load_csv(csv_file_path)
 
 
 def get_applicant_info():
@@ -101,6 +115,9 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
     return bank_data_filtered
 
+def exit_application():
+    sys.exit("Thank you for using the Loan Qualifier Application.")
+
 
 def save_qualifying_loans(qualifying_loans):
     """Saves the qualifying loans to a CSV file.
@@ -108,8 +125,59 @@ def save_qualifying_loans(qualifying_loans):
     Args:
         qualifying_loans (list of lists): The qualifying bank loans.
     """
-    # @TODO: Complete the usability dialog for savings the CSV Files.
-    # YOUR CODE HERE!
+    print(f"\n---------- DEBUG ----------")
+    print(f"qualifying_loans: {qualifying_loans}")
+    print(f"number of loans: {len(qualifying_loans)}")
+    print("---------- DEBUG ----------\n")
+
+    # ----- Acceptance Criteria -----
+    # Given that I’m using the loan qualifier CLI, when I run the qualifier, then the tool should prompt the user to save the results as a CSV file.
+    # -------------------------------
+    # Prompt the user to save their loans
+    save_loan_input = questionary.confirm("Do you want to save your qualifying loans results?").ask()
+
+    print(f"\n---------- DEBUG ----------")
+    print(f"save_loan_input: {save_loan_input}")
+    print("---------- DEBUG ----------\n")
+
+    # ----- Acceptance Criteria -----
+    # Given that I have a list of qualifying loans, when I’m prompted to save the results, then I should be able to opt out of saving the file.
+    # -------------------------------
+    
+    # If the user does not want to save, then exit
+    if not save_loan_input:
+        exit_application()
+    
+    # ----- Acceptance Criteria -----
+    # Given that no qualifying loans exist, when prompting a user to save a file, then the program should notify the user and exit.
+    # -------------------------------
+
+    # If there are no qualifying loans, then notify the user and exit
+    if not (len(qualifying_loans) > 1):
+        print("There are no qualifying loans to save.")
+        exit_application()
+    
+    # If we get here we know the user wants to save, and there are qualifying loans
+
+    # ----- Acceptance Criteria -----
+    # Given that I have a list of qualifying loans, when I choose to save the loans, the tool should prompt for a file path to save the file.
+    # -------------------------------
+
+    # Prompt the user to provide a file path
+    csv_file_path = questionary.text("Enter a file path to a rate-sheet (.csv):").ask()
+
+    # If the file path is blank set the path to the default, otherwise crea a path object with what they provided.
+    if csv_file_path == "":
+        csv_file_path = Path(default_output_data)
+    else:
+        csv_file_path = Path(csv_file_path)
+
+    # ----- Acceptance Criteria -----
+    # Given that I’m using the loan qualifier CLI, when I choose to save the loans, then the tool should save the results as a CSV file.
+    # -------------------------------
+    
+    # Save the filtered loan data to the file path specified
+    save_csv(csv_file_path, qualifying_loans)
 
 
 def run():
@@ -129,6 +197,8 @@ def run():
     # Save qualifying loans
     save_qualifying_loans(qualifying_loans)
 
+    # Exit the application
+    exit_application()
 
 if __name__ == "__main__":
     fire.Fire(run)
