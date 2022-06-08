@@ -8,7 +8,7 @@ The simple python application allows a user to filter through a list of potentia
 
 ## Technologies
 
-The stable version of this project uses Python 3.7, can be run on Windows, Mac OS, or Linux as long as the user's python environment includes the following libraries:
+The stable version of this project uses Python 3.7, can be run on Windows, Mac OS, or Linux as long as the user's python environment includes the following libraries / frameworks:
 - fire v0.4.0
 - questionary v1.10.0
 - Path (from pathlib)
@@ -23,8 +23,10 @@ In this section, you should include detailed installation notes containing code 
 You have a few options to install this application on your computer, two popular options are:
 1. Download a ZIP of this repositories files [here](https://github.com/Warp-9000/uw-fintech-2022-module02-challenge/archive/refs/heads/main.zip).
 2. [Fork this public respository](https://docs.github.com/en/get-started/quickstart/fork-a-repo) to your github account.
-> insert image
 
+<p align="center">
+    <img src="https://github.com/Warp-9000/uw-fintech-2022-module02-challenge/blob/main/instructions/screenshot%20-%20github.com%20-%20fork%20module%202%20challenge.png?raw=true" alt="Fork UI on GitHub.com" width="55%"/>
+</p>
 
 After forking this repository you can...
 1. Download a ZIP of your repositories files, or
