@@ -1,0 +1,50 @@
+  371  cd ~/Google\ Drive/Projects/uw-fintech-2022-module02-challenge/
+  372  git status .
+  373  git pull
+  374  git status
+  375  ls -alR .
+  376  git status .
+  377  git add README.md 
+  378  git commit -m "Documenting application" -m "Added the title, description. Added technologies, frameworks, and versions. Added an inital installation guide."
+  379  git push
+  380  git status .
+  381  git status .
+  382  git add README.md 
+  383  git commit -m "Improving documentation" -m "Added a screenshot to the installation guide."
+  384  git push
+  385  clear
+  386  python app.py 
+  387  git status .
+  388  git status .
+  389  git diff app.py
+  390  git add app.py 
+  391  git commit -c "Removed debug code"
+  392  git push
+  393  python app
+  394  python app.py 
+  395  clear
+  396  git status 
+  397  git add app.py qualifier/utils/fileio.py 
+  398  git restore --staged app.py qualifier/utils/fileio.py
+  399  git restore --staged app.py qualifier/utils/fileio.py
+  400  git status
+  401  git status
+  402  git add app.py qualifier/utils/fileio.py 
+  403  git commit -c
+  404  git commit
+  405  git push
+  406  git diff README.md
+  407  git status
+  408  git add .
+  409  git commit
+  410  git restore README.md 
+  411  git status
+  412  git restore --staged README.md 
+  413  git commit
+  414  git push
+  415  git add .
+  416  git commit
+  417  git push
+  418  clear
+  419  python app.py
+  420  history 50 > terminal_history.txt
