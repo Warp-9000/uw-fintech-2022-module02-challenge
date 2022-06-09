@@ -38,29 +38,29 @@ Forking has the added benefit of easily allowing you to keep your application fi
 
 ## Usage
 
-***Please note:*** *these usage instructions assume you have installed Python 3.7 and setup an environment where the libraries and frameworks listed in [Technologies](## Technologies) are installed.*
+***Please note:*** *these usage instructions assume you have installed Python 3.7 and setup an environment where the libraries and frameworks listed in [Technologies](# Technologies) are installed.*
 
 1. Navigate to the root folder of your repository.
 2. Run the application by typing `python app.py` and pressing *ENTER*.
+3. Enter the information requested by the application.
 
+An example of the application running:
 <p>
-    <img src="https://github.com/Warp-9000/uw-fintech-2022-module02-challenge/blob/main/instructions/screenshot%20-%20github.com%20-%20fork%20module%202%20challenge.png?raw=true" alt="python app.py in terminal" width="55%"/>
+    <img src="https://github.com/Warp-9000/uw-fintech-2022-module02-challenge/blob/main/instructions/loan-qualifier-app-usage.gif?raw=true" alt="python app.py in terminal" width="55%"/>
 </p>
-
-3. 
-
-This section should include screenshots, code blocks, or animations explaining how to use your project.
 
 ---
 
------------------------------------------------------------
-
 ## Contributors
 
-In this section, list all the people who contribute to this project. You might want recruiters or potential collaborators to reach you, so include your contact email and, optionally, your LinkedIn or Twitter profile.
+Thanks!
+
+<a href="https://github.com/Warp-9000/uw-fintech-2022-module02-challenge/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Warp-9000/uw-fintech-2022-module02-challenge" />
+</a>
 
 ---
 
 ## License
 
-When you share a project on a repository, especially a public one, it's important to choose the right license to specify what others can and can't with your source code and files. Use this section to include the license you want to use.
+This project is licensed under GNU GPLv3. Please see the LICENSE file [here]().
