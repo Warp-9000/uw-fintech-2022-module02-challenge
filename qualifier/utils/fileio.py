@@ -46,19 +46,15 @@ def save_csv(csv_path_name, loan_data):
 
     with open(csv_path_name, 'w', newline='') as csv_file:
 
-        # creating a DictWriter because inexpensive_loans is a dictionary
+        # creating a csv.writer because inexpensive_loans is a list of lists
         writer = csv.writer(csv_file)
 
-        # writing the header, if specified
+        # writing the header, if specified (this is currently hard-coded)
         if header != None:
-            print(f"Writing the header {header}")
             writer.writerow(header)
 
-        # writing each loan to the file
-        print("Writing each loan")
-        # iterating through the inexpensive loan list
+        # writing each loan to the file by iterating through the list of loans
         for loan in loan_data:
-            print(f"Writing this line: {loan}")
             # since our writer is a DictWriter it handles things for us
             writer.writerow(loan)
 

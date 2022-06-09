@@ -42,12 +42,13 @@ def load_bank_data():
     # If the file path is blank set the path to the default, otherwise crea a path object with what they provided.
     if csv_file_path == "":
         csv_file_path = Path(default_bank_loan_data)
+        print(f"No filepath provided. Using default: \"{default_bank_loan_data}\"")
     else:
         csv_file_path = Path(csv_file_path)
 
     # Check if the file path exists, if not exit the application
     if not csv_file_path.exists():
-        print("Oops! Can't find this path: {csv_file_path}")
+        print(f"Oops! Can't find this path: \"{csv_file_path}\"")
         exit_application()
 
     return load_csv(csv_file_path)
@@ -125,20 +126,12 @@ def save_qualifying_loans(qualifying_loans):
     Args:
         qualifying_loans (list of lists): The qualifying bank loans.
     """
-    print(f"\n---------- DEBUG ----------")
-    print(f"qualifying_loans: {qualifying_loans}")
-    print(f"number of loans: {len(qualifying_loans)}")
-    print("---------- DEBUG ----------\n")
-
     # ----- Acceptance Criteria -----
     # Given that I’m using the loan qualifier CLI, when I run the qualifier, then the tool should prompt the user to save the results as a CSV file.
     # -------------------------------
+    
     # Prompt the user to save their loans
     save_loan_input = questionary.confirm("Do you want to save your qualifying loans results?").ask()
-
-    print(f"\n---------- DEBUG ----------")
-    print(f"save_loan_input: {save_loan_input}")
-    print("---------- DEBUG ----------\n")
 
     # ----- Acceptance Criteria -----
     # Given that I have a list of qualifying loans, when I’m prompted to save the results, then I should be able to opt out of saving the file.
@@ -164,11 +157,12 @@ def save_qualifying_loans(qualifying_loans):
     # -------------------------------
 
     # Prompt the user to provide a file path
-    csv_file_path = questionary.text("Enter a file path to a rate-sheet (.csv):").ask()
+    csv_file_path = questionary.text("Enter a file path to save your loans (.csv):").ask()
 
     # If the file path is blank set the path to the default, otherwise crea a path object with what they provided.
     if csv_file_path == "":
         csv_file_path = Path(default_output_data)
+        print(f"No filepath provided. Using default: \"{default_output_data}\"")
     else:
         csv_file_path = Path(csv_file_path)
 
@@ -178,6 +172,8 @@ def save_qualifying_loans(qualifying_loans):
     
     # Save the filtered loan data to the file path specified
     save_csv(csv_file_path, qualifying_loans)
+    
+    print(f"Loans saved to: \"{csv_file_path}\"")
 
 
 def run():
