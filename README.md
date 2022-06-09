@@ -38,14 +38,14 @@ Forking has the added benefit of easily allowing you to keep your application fi
 
 ## Usage
 
-***Please note:*** *these usage instructions assume you have installed Python 3.7 and setup an environment where the libraries and frameworks listed in [Technologies](# Technologies) are installed.*
+***Please note:*** *these usage instructions assume you have installed Python 3.7 and setup an environment where the libraries and frameworks listed in [Technologies](#Technologies) are installed.*
 
 1. Navigate to the root folder of your repository.
 2. Run the application by typing `python app.py` and pressing *ENTER*.
 3. Enter the information requested by the application.
 
 An example of the application running:
-<p>
+<p align="center">
     <img src="https://github.com/Warp-9000/uw-fintech-2022-module02-challenge/blob/main/instructions/loan-qualifier-app-usage.gif?raw=true" alt="python app.py in terminal" width="55%"/>
 </p>
 
@@ -63,4 +63,4 @@ Thanks!
 
 ## License
 
-This project is licensed under GNU GPLv3. Please see the LICENSE file [here]().
+This project is licensed under GNU GPLv3. Please see the LICENSE file [here](https://github.com/Warp-9000/uw-fintech-2022/blob/main/Module-02/Challenge/loan_qualifier_app/LICENSE).
